@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(uuid())
+  phone         String   @unique
+  walletAddress String?
+  kycStatus     String   @default("PENDING") // PENDING, VERIFIED, REJECTED
+  transactions  Transaction[]
+  beneficiaries Beneficiary[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  amount      Float
+  status      String   @default("PENDING") // PENDING, ON_CHAIN, COMPLETED, FAILED
+  txHash      String?
+  recipient   String
+  currency    String   @default("USDC")
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Beneficiary {
+  id          String   @id @default(uuid())
+  name        String
+  phone       String?
+  bankDetails String?
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

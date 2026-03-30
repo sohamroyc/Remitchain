@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#6cf8bb",
+              "on-tertiary-container": "#009668",
+              "surface-bright": "#f7f9fb",
+              "primary-container": "#131b2e",
+              "inverse-primary": "#bec6e0",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-fixed": "#6ffbbe",
+              "outline-variant": "#c6c6cd",
+              "secondary-fixed-dim": "#4edea3",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-fixed": "#6ffbbe",
+              "secondary": "#006c49",
+              "surface-dim": "#d8dadc",
+              "on-secondary-fixed-variant": "#005236",
+              "on-background": "#191c1e",
+              "primary-fixed-dim": "#bec6e0",
+              "tertiary-container": "#002113",
+              "on-secondary-fixed": "#002113",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary-container": "#00714d",
+              "on-primary-fixed": "#131b2e",
+              "error-container": "#ffdad6",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#7c839b",
+              "surface": "#f7f9fb",
+              "surface-container": "#eceef0",
+              "on-surface": "#191c1e",
+              "primary-fixed": "#dae2fd",
+              "on-error": "#ffffff",
+              "tertiary": "#000000",
+              "on-error-container": "#93000a",
+              "on-tertiary-fixed": "#002113",
+              "inverse-surface": "#2d3133",
+              "surface-tint": "#565e74",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#3f465c",
+              "inverse-on-surface": "#eff1f3",
+              "surface-variant": "#e0e3e5",
+              "primary": "#000000",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#45464d",
+              "outline": "#76777d",
+              "tertiary-fixed-dim": "#4edea3",
+              "background": "#f7f9fb"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "3xl": "2rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden lg:flex flex-col py-8 gap-2 bg-[#131B2E] text-white h-screen w-64 fixed left-0 top-0 shadow-xl z-50">
+<div class="px-6 mb-8">
+<h1 class="text-2xl font-black tracking-tight text-white">RemitChain</h1>
+<p class="text-xs text-slate-400 uppercase tracking-widest mt-1">Private Banking</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-manrope text-sm font-medium">Dashboard</span>
+</a>
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">send</span>
+<span class="font-manrope text-sm font-medium">Send Money</span>
+</a>
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-manrope text-sm font-medium">Transactions</span>
+</a>
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-manrope text-sm font-medium">Beneficiaries</span>
+</a>
+<!-- Active Navigation -->
+<a class="bg-[#006C49] text-white rounded-xl mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_repeat</span>
+<span class="font-manrope text-sm font-medium">Scheduled Transfers</span>
+</a>
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-manrope text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 p-3 bg-white/5 rounded-2xl">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="portrait of a professional male executive in a dark suit with a soft neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGUdqJsiPkZtyzfiAOO-9Ub29Yu6y2F1CBQ0RDUGJ3Moj9_s-yx5KI5p_kzLiLHUmPLP9UWssiesH2NzS0ncLq7qxnjomiA32XcnpT7rs2k-_c-SmRTahz4TYap4cKSFrO17flQ65jxiRYVSOZnBY57vCnUS6QSZCzLoluA8lPWIcI21nlqSOL5_1nak5uW36ydyzRw-0F93KS1eQ-Kt-Rq2TCifgflljiczIZYHvosHLIx2S01_1D6Hgj5TTwgSxP4ClpAoarIHI"/>
+<div>
+<p class="text-xs font-bold">Julian V.</p>
+<p class="text-[10px] text-slate-400">Premium Member</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar (Mobile & Web) -->
+<header class="bg-white dark:bg-[#131B2E] text-[#000000] docked full-width top-0 sticky z-40 shadow-none">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-full lg:pl-72">
+<div class="flex items-center gap-4">
+<span class="lg:hidden material-symbols-outlined text-2xl">menu</span>
+<h2 class="font-manrope tracking-tight font-bold text-xl lg:hidden">RemitChain</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-2 rounded-full gap-2">
+<span class="material-symbols-outlined text-outline text-xl">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body" placeholder="Search transfers..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-full">notifications</button>
+<button class="material-symbols-outlined p-2 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors rounded-full">account_circle</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="lg:ml-64 p-6 lg:p-12 min-h-screen pb-32">
+<div class="max-w-5xl mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<h1 class="text-4xl lg:text-5xl font-headline font-extrabold tracking-tight text-primary mb-2">Scheduled Transfers</h1>
+<p class="text-on-surface-variant max-w-md font-body">Manage your automated future wealth movements and recurring commitments.</p>
+</div>
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-manrope font-bold text-sm tracking-wide flex items-center gap-2 hover:bg-black transition-all shadow-lg active:scale-95">
+<span class="material-symbols-outlined text-lg">add</span>
+                    CREATE RECURRING TRANSFER
+                </button>
+</div>
+<!-- Dashboard Stats Summary (Mini Bento) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
+<p class="text-xs font-bold uppercase tracking-widest text-outline mb-4">Total Monthly Value</p>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-headline font-bold">AED 14,200</span>
+<span class="text-secondary text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                            2.4%
+                        </span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
+<p class="text-xs font-bold uppercase tracking-widest text-outline mb-4">Active Schedules</p>
+<div class="text-3xl font-headline font-bold">08</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.04)] border-2 border-secondary/10">
+<p class="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Next Payment In</p>
+<div class="text-3xl font-headline font-bold text-secondary">48 Hours</div>
+</div>
+</div>
+<!-- Transfers List -->
+<div class="space-y-4">
+<div class="flex items-center justify-between px-2 mb-4">
+<h3 class="font-manrope font-bold text-lg">Upcoming Movements</h3>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-high rounded-lg material-symbols-outlined text-sm">filter_list</button>
+<button class="p-2 bg-surface-container-high rounded-lg material-symbols-outlined text-sm">sort</button>
+</div>
+</div>
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest hover:bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<div>
+<h4 class="font-manrope font-bold text-lg text-primary">Downtown Residence Rent</h4>
+<p class="text-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">account_balance_wallet</span>
+                                Real Estate Trust Corp
+                            </p>
+</div>
+</div>
+<div class="flex flex-wrap md:flex-nowrap items-center gap-8 md:gap-12">
+<div class="min-w-[120px]">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Amount</p>
+<p class="font-manrope font-bold text-lg">AED 8,500 <span class="text-xs text-on-surface-variant font-medium">/ monthly</span></p>
+</div>
+<div class="min-w-[120px]">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Next Transfer</p>
+<p class="font-body text-sm font-semibold text-primary">July 28, 2024</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Active</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">more_vert</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest hover:bg-white p-6 rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">family_restroom</span>
+</div>
+<div>
+<h4 class="font-manrope font-bold text-lg text-primary">Family Allowance</h4>
+<p class="text-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">person</span>
+                                Sarah Henderson
+                            </p>
+</div>
+</div>
+<div class="flex flex-wrap md:flex-nowrap items-center gap-8 md:gap-12">
+<div class="min-w-[120px]">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Amount</p>
+<p class="font-manrope font-bold text-lg">GBP 1,200 <span class="text-xs text-on-surface-variant font-medium">/ bi-weekly</span></p>
+</div>
+<div class="min-w-[120px]">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Next Transfer</p>
+<p class="font-body text-sm font-semibold text-primary">July 30, 2024</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Active</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors">more_vert</button>
+</div>
+</div>
+</div>
+<!-- Card 3 (Inactive) -->
+<div class="group bg-surface-container-low/50 p-6 rounded-2xl shadow-none border border-transparent flex flex-col md:flex-row md:items-center justify-between gap-6 opacity-70">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-highest flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<div>
+<h4 class="font-manrope font-bold text-lg text-outline">Q3 Investment Portfolio</h4>
+<p class="text-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">monitoring</span>
+                                BlackRock Global
+                            </p>
+</div>
+</div>
+<div class="flex flex-wrap md:flex-nowrap items-center gap-8 md:gap-12">
+<div class="min-w-[120px]">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Amount</p>
+<p class="font-manrope font-bold text-lg text-outline">USD 5,000 <span class="text-xs text-outline font-medium">/ quarterly</span></p>
+</div>
+<div class="min-w-[120px]">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-1">Next Transfer</p>
+<p class="font-body text-sm font-semibold text-outline">Paused</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-3">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline">Inactive</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<button class="material-symbols-outlined text-outline">more_vert</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Helper (Hidden by default, shown if no list) -->
+<div class="hidden flex flex-col items-center justify-center py-20 text-center">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl text-outline">calendar_today</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-2">No scheduled transfers</h3>
+<p class="text-on-surface-variant mb-8 max-w-sm">Setup recurring payments for rent, family, or savings and never worry about manual transfers again.</p>
+<button class="bg-primary text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                    Get Started
+                </button>
+</div>
+<!-- Quick Tips Section -->
+<div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-primary-container p-8 rounded-3xl relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-secondary-container text-4xl mb-4">verified_user</span>
+<h4 class="text-white font-manrope font-bold text-xl mb-2">Secure Automation</h4>
+<p class="text-slate-400 text-sm mb-6">RemitChain guarantees transfer execution or 100% liability coverage on institutional commitments.</p>
+<a class="text-secondary-container text-sm font-bold flex items-center gap-2 hover:gap-4 transition-all" href="#">
+                            Review Security Protocol <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-10 scale-150 transform transition-transform group-hover:rotate-12">
+<span class="material-symbols-outlined text-[160px] text-white">shield</span>
+</div>
+</div>
+<div class="bg-secondary p-8 rounded-3xl relative overflow-hidden group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-white text-4xl mb-4">query_stats</span>
+<h4 class="text-white font-manrope font-bold text-xl mb-2">Exchange Optimization</h4>
+<p class="text-white/80 text-sm mb-6">Our algorithms execute your recurring cross-border transfers at the day's lowest spread window.</p>
+<a class="text-white text-sm font-bold flex items-center gap-2 hover:gap-4 transition-all" href="#">
+                            FX Insight Tool <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-10 scale-150 transform transition-transform group-hover:rotate-12 text-white">
+<span class="material-symbols-outlined text-[160px]">trending_down</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-white/80 dark:bg-[#131B2E]/80 backdrop-blur-md shadow-[0_-10px_40px_rgba(0,0,0,0.04)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">paid</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Send</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#006C49] scale-110" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

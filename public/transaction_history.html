@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction History - RemitChain</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#6cf8bb",
+              "on-tertiary-container": "#009668",
+              "surface-bright": "#f7f9fb",
+              "primary-container": "#131b2e",
+              "inverse-primary": "#bec6e0",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-fixed": "#6ffbbe",
+              "outline-variant": "#c6c6cd",
+              "secondary-fixed-dim": "#4edea3",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-fixed": "#6ffbbe",
+              "secondary": "#006c49",
+              "surface-dim": "#d8dadc",
+              "on-secondary-fixed-variant": "#005236",
+              "on-background": "#191c1e",
+              "primary-fixed-dim": "#bec6e0",
+              "tertiary-container": "#002113",
+              "on-secondary-fixed": "#002113",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary-container": "#00714d",
+              "on-primary-fixed": "#131b2e",
+              "error-container": "#ffdad6",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#7c839b",
+              "surface": "#f7f9fb",
+              "surface-container": "#eceef0",
+              "on-surface": "#191c1e",
+              "primary-fixed": "#dae2fd",
+              "on-error": "#ffffff",
+              "tertiary": "#000000",
+              "on-error-container": "#93000a",
+              "on-tertiary-fixed": "#002113",
+              "inverse-surface": "#2d3133",
+              "surface-tint": "#565e74",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#3f465c",
+              "inverse-on-surface": "#eff1f3",
+              "surface-variant": "#e0e3e5",
+              "primary": "#000000",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#45464d",
+              "outline": "#76777d",
+              "tertiary-fixed-dim": "#4edea3",
+              "background": "#f7f9fb"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #e0e3e5;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-[#131B2E] docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-6 py-4 max-w-full">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold text-[#000000] dark:text-white font-manrope tracking-tight">RemitChain</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-slate-500" data-icon="notifications">notifications</span>
+</button>
+<button class="flex items-center gap-2 p-1 pl-3 border border-outline-variant/20 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="text-xs font-semibold text-on-surface-variant">Private Client</span>
+<span class="material-symbols-outlined text-primary-container" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Sidebar (Desktop) -->
+<aside class="hidden lg:flex flex-col py-8 gap-2 h-screen w-64 fixed left-0 top-0 bg-[#131B2E] text-white shadow-xl z-50">
+<div class="px-6 mb-10">
+<h1 class="text-2xl font-black text-white font-headline">RemitChain</h1>
+<p class="text-xs text-slate-400 font-medium tracking-widest uppercase mt-1">Private Banking</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a href="main_dashboard.html"    class="text-slate-300 hover:text-white hover:bg-white/10 rounded-xl mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a href="send_money_multi_step_flow.html"    class="text-slate-300 hover:text-white hover:bg-white/10 rounded-xl mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span>Send Money</span>
+</a>
+<a href="transaction_history.html"      class="bg-[#006C49] text-white rounded-xl mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Transactions</span>
+</a>
+<a href="beneficiaries_management.html"    class="text-slate-300 hover:text-white hover:bg-white/10 rounded-xl mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Beneficiaries</span>
+</a>
+<a href="scheduled_transfers.html"    class="text-slate-300 hover:text-white hover:bg-white/10 rounded-xl mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="event_repeat">event_repeat</span>
+<span>Scheduled Transfers</span>
+</a>
+<a href="settings.html"    class="text-slate-300 hover:text-white hover:bg-white/10 rounded-xl mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-white/5">
+<img alt="User Profile" class="w-10 h-10 rounded-full bg-slate-700" data-alt="professional headshot of a middle-aged executive man with a kind smile, clean studio lighting, soft gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK7TzzikNQXeo-f78JpwfBfk2ynbdpLXglayf7RiwlbXbKJQ9gBtCZ8qHBL6ZGn5G-x8boJIk3pWS6d1tRQ6t0kbezbX325anUqpu4aeEmGviGPakYFd46QoC4kEvGpOy7xGVcTWtgzMJFS_I7GOXXk1DcS_zPoL0G_RS2snIuEVmbktGfcUwrDVdUokpNtbfxDaw4VFNxgtmo0vigdQDXCb-rxiULYuOaur5N30yMQrbjA19ueyyRKrzwLd8MYrn63WXUCiXItD4"/>
+<div class="overflow-hidden">
+<p class="text-sm font-bold truncate">Alexander Vance</p>
+<p class="text-xs text-slate-400 truncate">Premium Member</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="lg:ml-64 px-6 md:px-12 py-8 pb-32">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<span class="text-secondary font-bold tracking-widest text-[10px] uppercase mb-2 block">Ledger Overview</span>
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight text-primary">All Transactions</h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative group">
+<button class="bg-surface-container-low px-5 py-3 rounded-xl flex items-center gap-3 text-sm font-semibold hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+<span>All Transactions</span>
+<span class="material-symbols-outlined text-lg" data-icon="expand_more">expand_more</span>
+</button>
+<!-- Simple Dropdown Mockup (Hidden on actual click, shown for visual) -->
+<div class="absolute right-0 top-full mt-2 w-48 bg-surface-container-lowest rounded-xl shadow-2xl border border-outline-variant/10 hidden group-hover:block z-50 overflow-hidden">
+<div class="p-2 flex flex-col">
+<button class="text-left px-4 py-2 hover:bg-surface-container-low rounded-lg text-sm font-medium transition-colors">All</button>
+<button class="text-left px-4 py-2 hover:bg-surface-container-low rounded-lg text-sm font-medium transition-colors">Completed</button>
+<button class="text-left px-4 py-2 hover:bg-surface-container-low rounded-lg text-sm font-medium transition-colors">Pending</button>
+<button class="text-left px-4 py-2 hover:bg-surface-container-low rounded-lg text-sm font-medium transition-colors">Failed</button>
+</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label text-xs font-bold tracking-widest uppercase hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                    Export
+                </button>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = localStorage.getItem('remitchain_token');
+    if (!token) {
+        window.location.href = 'authentication_phone_otp.html';
+        return;
+    }
+
+    const container = document.querySelector('.space-y-4');
+    
+    async function loadTransactions() {
+        try {
+            const res = await fetch('http://localhost:5000/api/transactions', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const transactions = await res.json();
+            renderTransactions(transactions);
+        } catch (err) {
+            console.error('Failed to load transactions:', err);
+        }
+    }
+
+    function renderTransactions(transactions) {
+        if (!transactions || transactions.length === 0) {
+            container.innerHTML = '<div class="text-center py-20 text-slate-400 font-medium">No transactions found</div>';
+            return;
+        }
+        
+        container.innerHTML = '';
+        
+        const groups = transactions.reduce((acc, tx) => {
+            const date = new Date(tx.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            if (!acc[date]) acc[date] = [];
+            acc[date].push(tx);
+            return acc;
+        }, {});
+
+        Object.keys(groups).forEach(date => {
+            const sep = document.createElement('div');
+            sep.className = 'flex items-center gap-4 py-4';
+            sep.innerHTML = `
+                <span class="text-[10px] font-bold tracking-[0.2em] text-outline uppercase whitespace-nowrap">${date}</span>
+                <div class="h-[1px] w-full bg-outline-variant/20"></div>
+            `;
+            container.appendChild(sep);
+
+            groups[date].forEach(tx => {
+                const time = new Date(tx.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                const card = document.createElement('div');
+                card.className = 'bg-surface-container-lowest p-5 md:p-6 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.02)] group cursor-pointer hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all duration-300';
+                card.innerHTML = `
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="flex items-center gap-5">
+                            <div class="w-14 h-14 rounded-2xl ${tx.amount > 0 ? 'bg-secondary/10 text-secondary' : 'bg-primary-container text-white'} flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-2xl">${tx.amount > 0 ? 'south_west' : 'north_east'}</span>
+                            </div>
+                            <div>
+                                <h4 class="font-headline text-lg font-bold text-primary">${tx.recipient || 'Transfer'}</h4>
+                                <p class="text-on-surface-variant text-sm flex items-center gap-2 mt-0.5">
+                                    <span class="material-symbols-outlined text-xs">schedule</span>
+                                    ${time} • ${tx.type || 'Blockchain Transfer'}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-row md:flex-col items-end justify-between md:justify-center gap-1">
+                            <div class="text-right">
+                                <span class="font-headline text-xl font-extrabold ${tx.amount > 0 ? 'text-secondary' : 'text-primary'} block">${tx.amount > 0 ? '+' : ''}${Math.abs(tx.amount).toLocaleString()} ${tx.currency || 'AED'}</span>
+                            </div>
+                            <div class="mt-2 md:mt-1">
+                                <span class="bg-${tx.status === 'COMPLETED' ? 'secondary/10 text-secondary' : 'amber-100 text-amber-700'} text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">${tx.status}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        });
+    }
+
+    loadTransactions();
+});
+</script>
+</body></html>

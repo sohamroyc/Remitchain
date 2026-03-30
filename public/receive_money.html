@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Receive Money | RemitChain</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#6cf8bb",
+              "on-tertiary-container": "#009668",
+              "surface-bright": "#f7f9fb",
+              "primary-container": "#131b2e",
+              "inverse-primary": "#bec6e0",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-fixed": "#6ffbbe",
+              "outline-variant": "#c6c6cd",
+              "secondary-fixed-dim": "#4edea3",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-fixed": "#6ffbbe",
+              "secondary": "#006c49",
+              "surface-dim": "#d8dadc",
+              "on-secondary-fixed-variant": "#005236",
+              "on-background": "#191c1e",
+              "primary-fixed-dim": "#bec6e0",
+              "tertiary-container": "#002113",
+              "on-secondary-fixed": "#002113",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary-container": "#00714d",
+              "on-primary-fixed": "#131b2e",
+              "error-container": "#ffdad6",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#7c839b",
+              "surface": "#f7f9fb",
+              "surface-container": "#eceef0",
+              "on-surface": "#191c1e",
+              "primary-fixed": "#dae2fd",
+              "on-error": "#ffffff",
+              "tertiary": "#000000",
+              "on-error-container": "#93000a",
+              "on-tertiary-fixed": "#002113",
+              "inverse-surface": "#2d3133",
+              "surface-tint": "#565e74",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#3f465c",
+              "inverse-on-surface": "#eff1f3",
+              "surface-variant": "#e0e3e5",
+              "primary": "#000000",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#45464d",
+              "outline": "#76777d",
+              "tertiary-fixed-dim": "#4edea3",
+              "background": "#f7f9fb"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Desktop Side Navigation -->
+<nav class="hidden lg:flex flex-col py-8 gap-2 bg-[#131B2E] h-screen w-64 fixed left-0 top-0 shadow-xl z-50">
+<div class="px-6 mb-12">
+<h1 class="text-2xl font-black text-white font-headline tracking-tight">RemitChain</h1>
+<p class="text-slate-400 text-xs mt-1 uppercase tracking-widest font-bold">Private Banking</p>
+</div>
+<div class="flex flex-col gap-1 flex-1">
+<a href="main_dashboard.html"    class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-slate-300 hover:text-white hover:bg-white/10 rounded-xl mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-200 ease-in-out font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="paid">paid</span>
+<span>Receive Money</span>
+</a>
+<a href="transaction_history.html"      class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Transactions</span>
+</a>
+<a href="beneficiaries_management.html"    class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Beneficiaries</span>
+</a>
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="event_repeat">event_repeat</span>
+<span>Scheduled</span>
+</a>
+</div>
+<div class="mt-auto px-4">
+<a href="settings.html"    class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" >
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</nav>
+<!-- Mobile Top Bar -->
+<header class="lg:hidden flex justify-between items-center w-full px-6 py-4 sticky top-0 bg-white z-50">
+<span class="text-xl font-bold text-[#000000] font-manrope tracking-tight">RemitChain</span>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="lg:ml-64 min-h-screen flex flex-col items-center justify-center p-6 md:p-12 pb-32 lg:pb-12">
+<div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+<!-- Left Column: Instructions -->
+<div class="md:col-span-5 space-y-8 order-2 md:order-1">
+<div>
+<h2 class="text-4xl font-headline font-extrabold text-primary tracking-tight leading-tight">Secure Global Receiving</h2>
+<p class="mt-4 text-on-surface-variant leading-relaxed">Accept payments from anywhere in the world instantly with zero fees. Our private banking infrastructure ensures every transfer is settled in 1:1 backed digital currency.</p>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="text-sm font-bold text-primary">01</span>
+</div>
+<div>
+<p class="font-bold text-primary font-headline">Share your credentials</p>
+<p class="text-sm text-on-surface-variant">Send your unique QR code or digital address to the sender via WhatsApp or email.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="text-sm font-bold text-primary">02</span>
+</div>
+<div>
+<p class="font-bold text-primary font-headline">Instant Verification</p>
+<p class="text-sm text-on-surface-variant">Our system validates the incoming transfer against high-tier security protocols in real-time.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center flex-shrink-0">
+<span class="text-sm font-bold text-primary">03</span>
+</div>
+<div>
+<p class="font-bold text-primary font-headline">Zero-Fee Settlement</p>
+<p class="text-sm text-on-surface-variant">Receive the exact amount sent. We never deduct "gas" or intermediary banking fees.</p>
+</div>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low rounded-2xl">
+<div class="flex items-center gap-3 text-secondary mb-2">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+<span class="text-xs font-bold uppercase tracking-widest">Trust Guarantee</span>
+</div>
+<p class="text-sm text-on-surface-variant">All inbound transfers are protected by 256-bit encryption and stored in our secure private vaults.</p>
+</div>
+</div>
+<!-- Right Column: The Centered Card -->
+<div class="md:col-span-7 order-1 md:order-2 flex flex-col items-center">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-2xl p-8 shadow-[0_20px_60px_rgba(0,0,0,0.06)] flex flex-col items-center">
+<div class="w-full flex justify-between items-center mb-8">
+<span class="text-[10px] uppercase tracking-[0.2em] font-bold text-outline">Your Unique Address</span>
+<div class="flex items-center gap-2 px-3 py-1 bg-secondary-container/20 rounded-full">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-wider">Online</span>
+</div>
+</div>
+<!-- QR Code Placeholder -->
+<div class="relative group cursor-pointer mb-8">
+<div class="absolute -inset-4 bg-surface-container-low rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<img alt="Professional QR code for payment" class="relative w-48 h-48 md:w-56 md:h-56 object-contain rounded-xl" data-alt="Modern minimalist black and white QR code framed in a clean white rounded square border on a soft gray background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRkPB8ypkXVEbLwGNpcR801FUteIc5NeiF3ln0q_Yze1evOS2r9xAEQITQxcvnzKQN-jZYFDZ7StgjuvZ7Omf30eCp08TqbzHI350R3cGl7_AGnIF2A4UuFgnIWrSMGsaSMhMwgdOEUHf-FJnISHHMz5-PcaJ-qepCEw4p9DuBb1V_a-lOsjHYZkyyjghSht9bas7ABLVZMGaNfawOliQr3XH3kiBjVeOY20XEj9CJ2gRns2mygg7fgbe7kzVOicSvMrdIUDQiblw"/>
+</div>
+<div class="w-full space-y-4">
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center justify-between group transition-colors hover:bg-surface-container-high">
+<div class="truncate mr-4">
+<p class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant mb-1">Wallet Address</p>
+<p class="font-mono text-sm text-primary tracking-tight">0x742d35Cc6634C0532925a3b844Bc454e4438f44e</p>
+</div>
+<button class="w-10 h-10 rounded-lg flex items-center justify-center text-primary-container active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<button class="w-full bg-primary-container text-white h-16 rounded-xl flex items-center justify-center gap-3 font-headline font-bold text-lg hover:bg-black transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+                            Share via WhatsApp
+                        </button>
+<button class="w-full bg-surface-container-high text-primary h-14 rounded-xl flex items-center justify-center gap-2 font-headline font-bold text-sm hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+                            Send via Email
+                        </button>
+</div>
+</div>
+<p class="mt-6 text-xs text-outline text-center max-w-xs leading-relaxed">
+                    By sharing this address, you agree to receive digital assets. 
+                    RemitChain does not support unauthorized third-party tokens.
+                </p>
+</div>
+</div>
+</main>
+<!-- Mobile Navigation -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-white/80 backdrop-blur-md shadow-[0_-10px_40px_rgba(0,0,0,0.04)] border-t border-slate-100">
+<a href="main_dashboard.html"    class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500" >
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Dashboard</span>
+</a>
+<a href="send_money_multi_step_flow.html"  class="flex flex-col items-center justify-center text-slate-400" >
+<span class="material-symbols-outlined" data-icon="paid">paid</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Send</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="transaction_history.html">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">History</span>
+</a>
+<a href="settings.html"  class="flex flex-col items-center justify-center text-slate-400" >
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Settings</span>
+</a>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = localStorage.getItem('remitchain_token');
+    if (!token) {
+        window.location.href = 'authentication_phone_otp.html';
+        return;
+    }
+
+    const addressEl = document.querySelector('p.font-mono.text-sm');
+    
+    // Fetch User Info
+    try {
+        const res = await fetch('http://localhost:5000/api/users/me', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (data.phone) {
+            // In our system, phone number acts as the primary receive identifier
+            addressEl.innerText = data.phone;
+        }
+    } catch (err) {
+        console.error('Failed to fetch user receiving info:', err);
+    }
+
+    // Make copy buttons work
+    const copyBtn = document.querySelector('button .material-symbols-outlined[data-icon="content_copy"]').parentElement;
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(addressEl.innerText);
+        const icon = copyBtn.querySelector('span');
+        icon.innerText = 'check';
+        icon.style.color = '#006C49';
+        setTimeout(() => { 
+            icon.innerText = 'content_copy'; 
+            icon.style.color = ''; 
+        }, 2000);
+    });
+});
+</script>
+</body>
+</html>

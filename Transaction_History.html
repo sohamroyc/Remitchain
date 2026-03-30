@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction History - RemitChain</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#6cf8bb",
+              "on-tertiary-container": "#009668",
+              "surface-bright": "#f7f9fb",
+              "primary-container": "#131b2e",
+              "inverse-primary": "#bec6e0",
+              "surface-container-low": "#f2f4f6",
+              "tertiary-fixed": "#6ffbbe",
+              "outline-variant": "#c6c6cd",
+              "secondary-fixed-dim": "#4edea3",
+              "surface-container-highest": "#e0e3e5",
+              "secondary-fixed": "#6ffbbe",
+              "secondary": "#006c49",
+              "surface-dim": "#d8dadc",
+              "on-secondary-fixed-variant": "#005236",
+              "on-background": "#191c1e",
+              "primary-fixed-dim": "#bec6e0",
+              "tertiary-container": "#002113",
+              "on-secondary-fixed": "#002113",
+              "surface-container-high": "#e6e8ea",
+              "on-secondary-container": "#00714d",
+              "on-primary-fixed": "#131b2e",
+              "error-container": "#ffdad6",
+              "on-secondary": "#ffffff",
+              "on-primary-container": "#7c839b",
+              "surface": "#f7f9fb",
+              "surface-container": "#eceef0",
+              "on-surface": "#191c1e",
+              "primary-fixed": "#dae2fd",
+              "on-error": "#ffffff",
+              "tertiary": "#000000",
+              "on-error-container": "#93000a",
+              "on-tertiary-fixed": "#002113",
+              "inverse-surface": "#2d3133",
+              "surface-tint": "#565e74",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#3f465c",
+              "inverse-on-surface": "#eff1f3",
+              "surface-variant": "#e0e3e5",
+              "primary": "#000000",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#45464d",
+              "outline": "#76777d",
+              "tertiary-fixed-dim": "#4edea3",
+              "background": "#f7f9fb"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "2xl": "2rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #e0e3e5;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-white dark:bg-[#131B2E] docked full-width top-0 sticky z-50 flex justify-between items-center w-full px-6 py-4 max-w-full">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold text-[#000000] dark:text-white font-manrope tracking-tight">RemitChain</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-slate-500" data-icon="notifications">notifications</span>
+</button>
+<button class="flex items-center gap-2 p-1 pl-3 border border-outline-variant/20 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="text-xs font-semibold text-on-surface-variant">Private Client</span>
+<span class="material-symbols-outlined text-primary-container" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Sidebar (Desktop) -->
+<aside class="hidden lg:flex flex-col py-8 gap-2 bg-[#131B2E] dark:bg-[#000000] h-screen w-64 fixed left-0 top-0 shadow-xl z-40">
+<div class="px-8 mb-10">
+<h1 class="text-2xl font-black text-white font-manrope">RemitChain</h1>
+<p class="text-[10px] tracking-[0.2em] uppercase text-slate-400 font-bold mt-1">Private Banking</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span> Dashboard
+            </a>
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="send">send</span> Send Money
+            </a>
+<a class="bg-[#006C49] text-white rounded-xl mx-2 px-4 py-3 flex items-center gap-3 font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span> Transactions
+            </a>
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span> Beneficiaries
+            </a>
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="event_repeat">event_repeat</span> Scheduled Transfers
+            </a>
+<div class="mt-auto pt-10">
+<a class="text-slate-300 hover:text-white mx-2 px-4 py-3 flex items-center gap-3 hover:bg-white/10 rounded-xl transition-all font-manrope text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span> Settings
+                </a>
+</div>
+</nav>
+</aside>
+<!-- Main Canvas -->
+<main class="lg:ml-64 px-6 md:px-12 py-8 pb-32">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+<div>
+<span class="text-secondary font-bold tracking-widest text-[10px] uppercase mb-2 block">Ledger Overview</span>
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight text-primary">All Transactions</h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative group">
+<button class="bg-surface-container-low px-5 py-3 rounded-xl flex items-center gap-3 text-sm font-semibold hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="filter_list">filter_list</span>
+<span>All Transactions</span>
+<span class="material-symbols-outlined text-lg" data-icon="expand_more">expand_more</span>
+</button>
+<!-- Simple Dropdown Mockup (Hidden on actual click, shown for visual) -->
+<div class="absolute right-0 top-full mt-2 w-48 bg-surface-container-lowest rounded-xl shadow-2xl border border-outline-variant/10 hidden group-hover:block z-50 overflow-hidden">
+<div class="p-2 flex flex-col">
+<button class="text-left px-4 py-2 hover:bg-surface-container-low rounded-lg text-sm font-medium transition-colors">All</button>
+<button class="text-left px-4 py-2 hover:bg-surface-container-low rounded-lg text-sm font-medium transition-colors">Completed</button>
+<button class="text-left px-4 py-2 hover:bg-surface-container-low rounded-lg text-sm font-medium transition-colors">Pending</button>
+<button class="text-left px-4 py-2 hover:bg-surface-container-low rounded-lg text-sm font-medium transition-colors">Failed</button>
+</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label text-xs font-bold tracking-widest uppercase hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                    Export
+                </button>
+</div>
+</div>
+<!-- Transaction List -->
+<div class="space-y-4">
+<!-- Date Separator -->
+<div class="flex items-center gap-4 py-4">
+<span class="text-[10px] font-bold tracking-[0.2em] text-outline uppercase whitespace-nowrap">Today — July 14, 2024</span>
+<div class="h-[1px] w-full bg-outline-variant/20"></div>
+</div>
+<!-- Transaction Card 1 (Sent - Completed) -->
+<div class="bg-surface-container-lowest p-5 md:p-6 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.02)] group cursor-pointer hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all duration-300 active:scale-[0.99]">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-2xl bg-primary-container flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="north_east">north_east</span>
+</div>
+<div>
+<h4 class="font-headline text-lg font-bold text-primary">Aarav Sharma</h4>
+<p class="text-on-surface-variant text-sm flex items-center gap-2 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+                                14:20 • ICICI Bank Transfer
+                            </p>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end justify-between md:justify-center gap-1">
+<div class="text-right">
+<span class="font-headline text-xl font-extrabold text-primary block">500.00 AED</span>
+<span class="text-secondary font-medium text-sm">≈ 11,320.50 INR</span>
+</div>
+<div class="mt-2 md:mt-1">
+<span class="bg-secondary/10 text-secondary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+</div>
+</div>
+</div>
+<!-- Expanded Details (Simplified Visual) -->
+<div class="mt-6 pt-6 border-t border-outline-variant/10 flex flex-wrap gap-8">
+<div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider block mb-1">Transaction ID</span>
+<span class="text-sm font-medium font-mono text-on-surface">RC-99823-X921</span>
+</div>
+<div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider block mb-1">Exchange Rate</span>
+<span class="text-sm font-medium text-on-surface">1 AED = 22.64 INR</span>
+</div>
+<div>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider block mb-1">Transfer Fee</span>
+<span class="text-sm font-medium text-on-surface">15.00 AED</span>
+</div>
+</div>
+</div>
+<!-- Transaction Card 2 (Pending) -->
+<div class="bg-surface-container-lowest p-5 md:p-6 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.02)] group cursor-pointer hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all duration-300">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-2xl bg-surface-container-low flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="south_west">south_west</span>
+</div>
+<div>
+<h4 class="font-headline text-lg font-bold text-primary">Global Payout Services</h4>
+<p class="text-on-surface-variant text-sm flex items-center gap-2 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+                                09:45 • Wallet Deposit
+                            </p>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end justify-between md:justify-center gap-1">
+<div class="text-right">
+<span class="font-headline text-xl font-extrabold text-primary block">2,450.00 AED</span>
+<span class="text-outline font-medium text-sm">Pending Verification</span>
+</div>
+<div class="mt-2 md:mt-1">
+<span class="bg-amber-100 text-amber-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Pending</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Date Separator -->
+<div class="flex items-center gap-4 py-4">
+<span class="text-[10px] font-bold tracking-[0.2em] text-outline uppercase whitespace-nowrap">Yesterday — July 13, 2024</span>
+<div class="h-[1px] w-full bg-outline-variant/20"></div>
+</div>
+<!-- Transaction Card 3 (Failed) -->
+<div class="bg-surface-container-lowest p-5 md:p-6 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.02)] group cursor-pointer hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all duration-300">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-2xl bg-error/5 flex items-center justify-center text-error shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="north_east">north_east</span>
+</div>
+<div>
+<h4 class="font-headline text-lg font-bold text-primary">Elena Rodriguez</h4>
+<p class="text-on-surface-variant text-sm flex items-center gap-2 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+                                18:12 • SEPA Instant
+                            </p>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end justify-between md:justify-center gap-1">
+<div class="text-right">
+<span class="font-headline text-xl font-extrabold text-error block">1,200.00 AED</span>
+<span class="text-outline font-medium text-sm">Refund Initiated</span>
+</div>
+<div class="mt-2 md:mt-1">
+<span class="bg-error/10 text-error text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Failed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Transaction Card 4 (Sent - Completed) -->
+<div class="bg-surface-container-lowest p-5 md:p-6 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.02)] group cursor-pointer hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] transition-all duration-300">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-5">
+<div class="w-14 h-14 rounded-2xl bg-primary-container flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined text-2xl" data-icon="north_east">north_east</span>
+</div>
+<div>
+<h4 class="font-headline text-lg font-bold text-primary">Office Rent July</h4>
+<p class="text-on-surface-variant text-sm flex items-center gap-2 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+                                10:00 • Scheduled Payment
+                            </p>
+</div>
+</div>
+<div class="flex flex-row md:flex-col items-end justify-between md:justify-center gap-1">
+<div class="text-right">
+<span class="font-headline text-xl font-extrabold text-primary block">8,500.00 AED</span>
+<span class="text-secondary font-medium text-sm">No Conversion</span>
+</div>
+<div class="mt-2 md:mt-1">
+<span class="bg-secondary/10 text-secondary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Completed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-12 flex justify-center">
+<button class="bg-white px-8 py-4 rounded-xl shadow-sm border border-outline-variant/10 text-sm font-bold tracking-widest uppercase hover:bg-surface-container-low transition-colors text-primary flex items-center gap-3">
+                Load Historical Records
+                <span class="material-symbols-outlined text-lg" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-white/80 dark:bg-[#131B2E]/80 backdrop-blur-md shadow-[0_-10px_40px_rgba(0,0,0,0.04)] rounded-t-3xl border-t border-slate-100">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="paid">paid</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Send</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#006C49] scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Settings</span>
+</a>
+</nav>
+<!-- Contextual FAB (Only for main history view) -->
+<button class="fixed bottom-28 right-6 lg:bottom-10 lg:right-10 bg-primary text-white w-14 h-14 rounded-2xl shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+</body></html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RemitChain | The Digital Private Bank</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --primary-container: #131B2E;
+            --secondary: #006C49;
+            --surface-lowest: #FFFFFF;
+            --surface: #F7F9FB;
+            --surface-low: #F2F4F6;
+            --surface-high: #E6E8EA;
+            --on-surface: #191c1e;
+            --on-surface-variant: #45464d;
+            --outline-variant: rgba(198, 198, 205, 0.15); /* Ghost border */
+            
+            --spacing-4: 1rem;
+            --spacing-8: 2rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--surface);
+            color: var(--on-surface);
+            line-height: 1.5;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, .display {
+            font-family: 'Manrope', sans-serif;
+            color: var(--primary-container);
+            letter-spacing: -0.02em;
+        }
+
+        .display-lg {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .headline-lg {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .title-sm {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .body-lg {
+            font-size: 1.125rem;
+            color: var(--on-surface-variant);
+            max-width: 600px;
+        }
+
+        .body-sm {
+            font-size: 0.875rem;
+            color: var(--on-surface-variant);
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: var(--spacing-4) var(--spacing-8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-container);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Layout & Spacing */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-8);
+        }
+
+        .hero {
+            padding-top: calc(100px + var(--spacing-16));
+            padding-bottom: var(--spacing-16);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-8);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20vh;
+            right: -10vw;
+            width: 50vw;
+            height: 50vw;
+            background: linear-gradient(145deg, rgba(19, 27, 46, 0.05) 0%, rgba(0, 108, 73, 0.05) 100%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.25rem 2.5rem;
+            border-radius: 1.5rem; /* xl radius */
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, var(--primary) 0%, var(--primary-container) 100%);
+            color: var(--surface-lowest);
+            box-shadow: 0 10px 40px rgba(19, 27, 46, 0.15);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 48px rgba(19, 27, 46, 0.25);
+        }
+
+        .btn-secondary {
+            background: var(--surface-highest);
+            color: var(--primary-container);
+            background: #E6E8EA;
+        }
+        
+        .btn-secondary:hover {
+            background: #D8DADC;
+            transform: translateY(-1px);
+        }
+
+        /* Cards & Grid */
+        .grid-layers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-8);
+            margin-top: var(--spacing-16);
+        }
+
+        .card {
+            background: var(--surface-lowest);
+            border-radius: 2rem; /* 2xl */
+            padding: var(--spacing-8);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            outline: 1px solid var(--outline-variant);
+            box-shadow: 0 10px 40px rgba(25, 28, 30, 0.02);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            /* Intentional Asymmetry offset */
+            transform: translateY(0);
+        }
+
+        .card:nth-child(even) {
+            margin-top: var(--spacing-8);
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 60px rgba(25, 28, 30, 0.06);
+            transform: translateY(-8px);
+            outline: 1px solid rgba(19, 27, 46, 0.1);
+        }
+
+        .card .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-container);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            margin-top: auto;
+            color: var(--on-surface-variant);
+        }
+
+        .card-arrow {
+            position: absolute;
+            bottom: var(--spacing-8);
+            right: var(--spacing-8);
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            color: var(--secondary);
+        }
+
+        .card:hover .card-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Hero Badges / Metadata */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--surface-lowest);
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--secondary);
+            box-shadow: 0 4px 20px rgba(25, 28, 30, 0.03);
+            width: fit-content;
+            margin-bottom: var(--spacing-4);
+        }
+        
+        .badge span {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="24" height="24" rx="6" fill="#131B2E"/>
+                <path d="M7 12L12 7L17 12M12 17V8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            RemitChain
+        </a>
+        <a href="authentication_phone_otp.html" class="btn btn-secondary" style="padding: 0.75rem 1.5rem; font-size: 0.75rem;">Access Vault</a>
+    </nav>
+
+    <main class="container">
+        <section class="hero">
+            <div class="badge"><span></span> Institutional Grade Platform</div>
+            <h1 class="display-lg">Absolute Stability.<br>Invisible Security.</h1>
+            <p class="body-lg">
+                Move away from the chaotic noise of everyday transfers. Experience the quiet authority of a modern private institution. Global remittances built on unyielding cryptographic infrastructure.
+            </p>
+            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                <a href="main_dashboard.html" class="btn btn-primary">Enter Dashboard</a>
+                <a href="send_money_multi_step_flow.html" class="btn btn-secondary">Initiate Transfer</a>
+            </div>
+        </section>
+
+        <section class="modules">
+            <h2 class="headline-lg" style="margin-bottom: 3rem;">Platform Capabilities</h2>
+            
+            <div class="grid-layers">
+                <!-- Card 1 -->
+                <a href="send_money_multi_step_flow.html" class="card">
+                    <div class="icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </div>
+                    <div>
+                        <h3>Send Funds</h3>
+                        <p class="body-sm" style="margin-top: 0.5rem;">Execute multi-step cross border transactions with institutional oversight.</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="transaction_history.html" class="card">
+                    <div class="icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    </div>
+                    <div>
+                        <h3>Ledger History</h3>
+                        <p class="body-sm" style="margin-top: 0.5rem;">Unchangeable records of all historical fiat and digital asset movements.</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="beneficiaries_management.html" class="card">
+                    <div class="icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <div>
+                        <h3>Beneficiaries</h3>
+                        <p class="body-sm" style="margin-top: 0.5rem;">Manage trusted recipients and multi-party clearance profiles.</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="scheduled_transfers.html" class="card">
+                    <div class="icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>Automated Routing</h3>
+                        <p class="body-sm" style="margin-top: 0.5rem;">Set scheduled operations for predictable treasury management.</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+                
+                <!-- Card 5 -->
+                <a href="settings.html" class="card">
+                    <div class="icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </div>
+                    <div>
+                        <h3>Platform Policy</h3>
+                        <p class="body-sm" style="margin-top: 0.5rem;">Configuration of multi-factor thresholds and compliance limits.</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+
+                <!-- Card 6 -->
+                <a href="receive_money.html" class="card">
+                    <div class="icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"></line><polyline points="5 15 12 22 19 15"></polyline></svg>
+                    </div>
+                    <div>
+                        <h3>Inbound Liquidity</h3>
+                        <p class="body-sm" style="margin-top: 0.5rem;">Generate deposit details and monitor real-time clearing statuses.</p>
+                    </div>
+                    <div class="card-arrow">→</div>
+                </a>
+            </div>
+        </section>
+        
+        <div style="height: 100px;"></div>
+    </main>
+</body>
+</html>
